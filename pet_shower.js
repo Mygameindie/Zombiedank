@@ -79,8 +79,10 @@
 
   const sponge = {
     img: new Image(),
-    x: 100,
-    y: 100,
+    // Starts clear of the stats panel in the top-left corner (it used to sit under
+    // it, so the sponge could hardly be picked up).
+    x: Math.max(220, canvas.width * 0.7),
+    y: Math.max(120, canvas.height * 0.25),
     width: 100,
     height: 100,
     dragging: false,
@@ -97,7 +99,8 @@
     try {
       splashSound.pause();
       splashSound.currentTime = 0;
-      splashSound.play();
+      const p = splashSound.play();
+      if (p && p.catch) p.catch(() => {});
     } catch {}
   }
 
