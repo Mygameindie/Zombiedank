@@ -1,11 +1,39 @@
 {
   "crops": [
-    { "key": "jelly",           "label": "Jelly",            "seedImg": "food1.png" },
-    { "key": "bittergummybear", "label": "Bitter Gummy",     "seedImg": "food2.png" },
-    { "key": "pinkgummybear",   "label": "Pink Gummy",       "seedImg": "food3.png" },
-    { "key": "yellowgummybear", "label": "Yellow Gummy",     "seedImg": "food4.png" },
-    { "key": "icegummybear",    "label": "Ice Gummy",        "seedImg": "food5.png" },
-    { "key": "giantgummybear",  "label": "Giant Gummy",      "seedImg": "food6.png" },
-    { "key": "rainbowgummybear","label": "Rainbow Gummy",    "seedImg": "food7.png" }
+    {
+      "key": "brain",
+      "label": "Brain",
+      "seedImg": "food1.png"
+    },
+    {
+      "key": "garlic",
+      "label": "Garlic",
+      "seedImg": "food2.png"
+    },
+    {
+      "key": "fish",
+      "label": "Fish",
+      "seedImg": "food3.png"
+    },
+    {
+      "key": "chicken",
+      "label": "Chicken",
+      "seedImg": "food4.png"
+    },
+    {
+      "key": "icegummybear",
+      "label": "Ice Gummy",
+      "seedImg": "food5.png"
+    },
+    {
+      "key": "giantgummybear",
+      "label": "Giant Gummy",
+      "seedImg": "food6.png"
+    },
+    {
+      "key": "rainbowgummybear",
+      "label": "Rainbow Gummy",
+      "seedImg": "food7.png"
+    }
   ]
 }

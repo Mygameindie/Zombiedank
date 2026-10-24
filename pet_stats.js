@@ -58,8 +58,10 @@
   // --- Garden inventory (bag linked to feed mode) ---
   function defaultInventory() {
     return {
-      jelly: 2, bittergummybear: 2, pinkgummybear: 2,
-      yellowgummybear: 2, icegummybear: 2, giantgummybear: 2, rainbowgummybear: 2,
+      // Same keys as feed_items.json and garden_items.json (a food with no entry here
+      // counts as 0 and its Feed button stays greyed out).
+      brain: 2, garlic: 2, fish: 2, chicken: 2,
+      icegummybear: 2, giantgummybear: 2, rainbowgummybear: 2,
     };
   }
   let gardenInventory = (saved && saved.gardenInventory)
