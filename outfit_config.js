@@ -203,9 +203,9 @@ window.OUTFIT_CONFIG = {
 
   // What the pet is already wearing when the game starts, per gender.
   defaults: {
-    girl: {
+    boy: {
       hat: "hat1",
-      bottomUnderwear: "bottomunderwear1",
+      bottomUnderwear: "boxers1_2",
       dress: "dress1",
     },
   },

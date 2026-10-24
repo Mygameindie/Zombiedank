@@ -38,7 +38,7 @@
 window.PET_GENDER_CONFIG = window.PET_GENDER_CONFIG || {
 
   // 👇 THE SETTING: "girl" or "boy"
-  gender: "girl",
+  gender: "boy",
 
   // Show the Girl/Boy switch inside the Dress Up panel? (off: the gender is fixed)
   showSwitchButton: false,
