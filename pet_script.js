@@ -279,9 +279,7 @@
     if (typeof D === 'function') {
       // whole: true (outfit_config.js): carried by the body in one piece, drawn
       // over the chest (a bra: its cups and straps never go off with an arm).
-      // suit: true (a bodysuit) is never kept whole: it is cut along the body parts like
-      // a top and pants combined, so sleeves and legs move with no seam at the hips.
-      const covers = it => !it.stiff && !it.whole && !it.suit && coversChest(it);
+      const covers = it => !it.stiff && !it.whole && coversChest(it);
       // A garment with its own <name>_L / <name>_R leg pictures (shoes, socks) is
       // not cut along the legs: those two pictures replace it on the legs.
       const legPic = im => !!im && !im._failed && im.complete && im.naturalWidth > 0;
