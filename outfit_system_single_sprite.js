@@ -88,6 +88,7 @@
       stiff: entry.stiff,
       whole: entry.whole,
       cuffs: entry.cuffs,
+      suit: entry.suit,
       blows: entry.blows,
     };
   }
@@ -125,7 +126,7 @@
     : FALLBACK_CONFIG;
 
   const cats = cfg.categories.map(c => ({
-    key: c.key, label: c.label || c.key, z: Number(c.z) || 100, behind: !!c.behind, hangs: !!c.hangs, blows: c.blows,
+    key: c.key, label: c.label || c.key, z: Number(c.z) || 100, behind: !!c.behind, hangs: !!c.hangs, suit: !!c.suit, blows: c.blows,
   }));
 
   // ---- Gender: which wardrobe this one pet is using -------------------------
@@ -165,6 +166,7 @@
             stiff: !!it.stiff,
             whole: !!it.whole,
             cuffs: !!it.cuffs,
+            suit: it.suit === undefined ? !!c.suit : !!it.suit,
             blows: it.blows === undefined ? c.blows : it.blows,
           };
       });

@@ -65,6 +65,8 @@ const DRESS1_SKIRT = {
 //                  the canvas height its skirt starts at (a dress: blows: 820).
 //    stiff: true   one solid piece over the chest (a crop top): stays whole on
 //                  the body, its sleeves still follow the arms.
+//    suit: true    its pictures cover the whole legs (a bodysuit with shoes): the pet's
+//                  bare legs are hidden under it instead of poking out beside it.
 //    cuffs: true   its sleeve pictures are cuffs stuck to the top: drawn under
 //                  it and carried by the body, not turning with the arms,
 //                  so the arms are held still while it is worn.
@@ -148,7 +150,7 @@ window.OUTFIT_CONFIG = {
     { key: "top",               label: "Top",                       z: 120 },
     { key: "bottom",            label: "Pants / Skirt",             z: 110 },
     { key: "dress",             label: "Dress",                     z: 130, blows: 820 },
-    { key: "bodysuit",          label: "Bodysuit",                  z: 128 },
+    { key: "bodysuit",          label: "Bodysuit",                  z: 128, suit: true },
     { key: "socks",             label: "Socks",                     z: 85  },
     { key: "shoes",             label: "Shoes",                     z: 90  },
     { key: "glove",             label: "Glove",                     z: 140 },

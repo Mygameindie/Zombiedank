@@ -807,7 +807,7 @@
           art.x.restore();
         };
         if (part.carry && part.carryBelow && bodyImg) putCarry();
-        art.x.drawImage(img, 0, 0, CW, CH);
+        if (!(part.drop && armCloth && armCloth.hideLegs)) art.x.drawImage(img, 0, 0, CW, CH);
         if (part.unline) unline(art.x, part.unline);
         if (part.rest) {
           const skin = skinOf(art.x);
