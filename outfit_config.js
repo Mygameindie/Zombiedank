@@ -208,7 +208,7 @@ window.OUTFIT_CONFIG = {
     boy: {
       hat: "hat1",
       bottomUnderwear: "boxers1_2",
-      dress: "dress1",
+      bodysuit: "bodysuit1_2",
     },
   },
 };
