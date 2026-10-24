@@ -59,7 +59,7 @@ const DRESS1_SKIRT = {
 //  RAGDOLL (ported from Computer-pet): each pixel of a garment moves with the
 //  body part under it (see clothing_template/README.md). Three flags change
 //  how a garment is cut up:
-//    hangs: true   hangs from the hips in one piece (skirts, dresses, bodysuits) while
+//    hangs: true   hangs from the hips in one piece (skirts, dresses) while
 //                  the legs swing underneath, instead of splitting between them.
 //    blows: true   like hangs, and blows up while the pet falls. A number is
 //                  the canvas height its skirt starts at (a dress: blows: 820).
@@ -148,7 +148,7 @@ window.OUTFIT_CONFIG = {
     { key: "top",               label: "Top",                       z: 120 },
     { key: "bottom",            label: "Pants / Skirt",             z: 110 },
     { key: "dress",             label: "Dress",                     z: 130, blows: 820 },
-    { key: "bodysuit",          label: "Bodysuit",                  z: 128, hangs: true },
+    { key: "bodysuit",          label: "Bodysuit",                  z: 128 },
     { key: "socks",             label: "Socks",                     z: 85  },
     { key: "shoes",             label: "Shoes",                     z: 90  },
     { key: "glove",             label: "Glove",                     z: 140 },
