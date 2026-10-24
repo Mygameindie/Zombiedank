@@ -77,9 +77,10 @@ window.OUTFIT_PRESETS = [
   {
     name: "Comfy",
     emoji: "🩲",
-    clothes: { topUnderwear: "topunderwear1", bottomUnderwear: "bottomunderwear1" },
+    boy: {
+      clothes: { bottomUnderwear: "boxers1" },
     // Boy version: no top underwear — just boxers.
-   
+   },
   },
   {
     name: "Swimsuit",
