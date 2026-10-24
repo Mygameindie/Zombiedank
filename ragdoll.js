@@ -1012,7 +1012,7 @@
         c.getContext('2d').drawImage(r.c, -b.x0, -b.y0);
         const pv = CFG.particles[def.pivot], ch = CFG.particles[def.child];
         const sleeve = {
-          id: id + '_cloth', pivot: def.pivot, child: def.child, canvas: c,
+          id: id + '_cloth', pivot: def.pivot, child: def.child, canvas: c, lift: def.lift,   // lift: the sleeve rides up with its arm
           ox: pv.x * cs - b.x0, oy: pv.y * cs - b.y0,
           restAngle: Math.atan2(ch.y - pv.y, ch.x - pv.x),
         };
