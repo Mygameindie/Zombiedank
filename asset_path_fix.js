@@ -86,7 +86,7 @@
     const m = POSE.exec(failed);
     const core = m ? m[1].split('_').filter(t => t !== '2').join('_') : '';
     const two = fb === 'base_2.png';
-    const headUrl = IMAGE_DIR + 'parts/' + (m ? (HEAD_FILE[core] || 'head_' + core) : 'head') + (two ? '_2' : '') + '.png';
+    const headUrl = IMAGE_DIR + 'parts/' + (m && core ? (HEAD_FILE[core] || 'head_' + core) : 'head') + (two ? '_2' : '') + '.png';
     const key = fb + '+' + headUrl;
     if (composed.has(key)) return cb(composed.get(key));
     const body = new Image(), head = new Image();
@@ -128,7 +128,10 @@
       setTimeout(() => {
         if (img.src !== failed) return;
         const plain = BASE.exec(failed);
-        const fb = plain ? (plain[1] ? 'base_2.png' : 'base.png') : fallbackName(failed);
+        // pet_gender.js retries a missing boy picture as the girl's plain name first, so
+        // base.png failing for a boy still means "build the boy's body" (base_2.png).
+        const boy = !!(window.PetGender && typeof window.PetGender.get === 'function' && window.PetGender.get() === 'boy');
+        const fb = plain ? ((plain[1] || boy) ? 'base_2.png' : 'base.png') : fallbackName(failed);
         if (!fb || (!plain && failed.split('?')[0].endsWith('/' + fb))) return;
         withHead(failed, fb, url => {
           if (img.src !== failed) return;
