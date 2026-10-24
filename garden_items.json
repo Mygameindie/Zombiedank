@@ -24,16 +24,6 @@
       "key": "peppermint",
       "label": "peppermint",
       "seedImg": "food5.png"
-    },
-    {
-      "key": "giantgummybear",
-      "label": "Giant Gummy",
-      "seedImg": "food6.png"
-    },
-    {
-      "key": "rainbowgummybear",
-      "label": "Rainbow Gummy",
-      "seedImg": "food7.png"
     }
   ]
 }
