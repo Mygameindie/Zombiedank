@@ -46,9 +46,11 @@ window.OUTFIT_PRESETS = [
   {
     name: "Casual",
     emoji: "👕",
+	boy: {
     clothes: { hat: "hat1",
       bottomUnderwear: "bottomunderwear1",
       dress: "dress1"},
+	  },
   },
   {
     name: "Skirt Day",
