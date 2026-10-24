@@ -2,8 +2,8 @@
   "toolbarTitle": "Feeding Mode",
   "items": [
     {
-      "key": "jelly",
-      "label": "jelly",
+      "key": "brain",
+      "label": "brain",
       "imgSrc": "food1.png",
       "liked": true,
       "w": 100,
@@ -11,8 +11,8 @@
       "type": "normal"
     },
     {
-      "key": "bittergummybear",
-      "label": "bittergummybear",
+      "key": "garlic",
+      "label": "garlic",
       "imgSrc": "food2.png",
       "liked": false,
       "w": 100,
@@ -20,8 +20,8 @@
       "type": "normal"
     },
     {
-      "key": "pinkgummybear",
-      "label": "pinkgummybear",
+      "key": "fish",
+      "label": "fish",
       "imgSrc": "food3.png",
       "liked": true,
       "w": 100,
@@ -29,10 +29,10 @@
       "type": "normal"
     },
     {
-      "key": "yellowgummybear",
-      "label": "yellowgummybear",
+      "key": "chicken",
+      "label": "chicken",
       "imgSrc": "food4.png",
-      "liked": true,
+      "liked": false,
       "w": 100,
       "h": 100,
       "type": "normal"
@@ -44,7 +44,7 @@
       "liked": true,
       "w": 120,
       "h": 120,
-      "type": "ice"
+      "type": "normal"
     },
     {
       "key": "giantgummybear",
