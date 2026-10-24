@@ -279,7 +279,7 @@
     const W = Math.round(RCFG.SRC_W * cs), H = Math.round(RCFG.SRC_H * cs);
     const sized = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; };
     const cloth = sized(), hang = sized(), over = sized(), under = sized(), blow = sized(),
-      stiff = sized(), armL = sized(), armR = sized(), legL = sized(), legR = sized(), legTop = sized(), back = sized(), overTop = sized();
+      stiff = sized(), armL = sized(), armR = sized(), legL = sized(), legR = sized(), legTop = sized(), back = sized(), overTop = sized(), collar = sized();
     let blowFrom = Infinity;
     const D = window.drawOutfitOverlay;
     if (typeof D === 'function') {
@@ -336,6 +336,16 @@
       D(sx, 'stand', 0, 0, W, H, i, it => it.cuffs, 'armL');
       D(sx, 'stand', 0, 0, W, H, i, it => it.cuffs, 'armR');
       sx.drawImage(suitPart(0, legTopY), 0, 0);
+      // The suit's collar (its neckline) is also drawn over the neck, so the neck
+      // is not cropped by it: the front of the collar wraps round it.
+      if (hideLegs) {
+        const cx = collar.getContext('2d');
+        cx.drawImage(suitPart(0, legTopY), 0, 0);
+        cx.clearRect(0, 0, Math.round(385 * cs), H);
+        cx.clearRect(Math.round(465 * cs), 0, W, H);
+        cx.clearRect(0, 0, W, Math.round(588 * cs));
+        cx.clearRect(0, Math.round(630 * cs), W, H);
+      }
       D(sx, 'stand', 0, 0, W, H, i, it => !it.whole && (it.stiff || (covers(it) && !it.hangs && !it.blows)));
       // A dress (or other hanging garment) that covers the chest: its top half
       // goes over the chest like a top, its skirt still hangs / blows.
@@ -364,7 +374,7 @@
     try {
       const partImgs = face ? Object.assign({}, pet.partImgs, { head: pet.faceImgs[face] }) : pet.partImgs;
       pet.body.buildArt(partImgs, cloth, cs, hang, over, under, blow,
-        isFinite(blowFrom) ? blowFrom : null, stiff, { arm_L: armL, arm_R: armR, hideLegs: hideLegs, armArt: !!pet.body.armsLocked, leg_L: legL, leg_R: legR, legTop }, back, overTop);
+        isFinite(blowFrom) ? blowFrom : null, stiff, { arm_L: armL, arm_R: armR, hideLegs: hideLegs, collar: hideLegs ? collar : null, armArt: !!pet.body.armsLocked, leg_L: legL, leg_R: legR, legTop }, back, overTop);
     } catch (err) {
       // Reading the pictures' pixels is refused when the game is opened as a
       // file:// page (serve it over http, e.g. GitHub Pages). Keep the sprite.

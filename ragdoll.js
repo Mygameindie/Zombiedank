@@ -1046,6 +1046,23 @@
         const topAt = out.findIndex(o => o.id === 'body_over');
         if (topAt >= 0) out.splice(topAt, 0, sleeve); else out.push(sleeve);
       }
+      // The collar of a suit, over the neck (see buildArt's caller): rides with the chest.
+      if (armCloth && armCloth.collar) {
+        const r = mkRead(CW, CH);
+        r.x.drawImage(armCloth.collar, 0, 0);
+        const b = bboxOf(r.x);
+        if (b) {
+          const c = mk(b.x1 - b.x0, b.y1 - b.y0);
+          c.getContext('2d').drawImage(r.c, -b.x0, -b.y0);
+          const pv = CFG.particles.N, ch = CFG.particles.P;
+          const ox = pv.x * cs - b.x0, oy = pv.y * cs - b.y0;
+          out.push({
+            id: 'collar', pivot: 'N', child: 'P', canvas: c,
+            ox, oy, restAngle: Math.atan2(ch.y - pv.y, ch.x - pv.x),
+            mesh: chestParts.length ? chestMesh(c, ox, oy) : null,
+          });
+        }
+      }
       // Back pieces of clothes: behind the legs and body, turned with the torso.
       if (back) {
         const r = mkRead(CW, CH);
