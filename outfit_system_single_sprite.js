@@ -88,6 +88,7 @@
       stiff: entry.stiff,
       whole: entry.whole,
       cuffs: entry.cuffs,
+      suit: entry.suit,
       blows: entry.blows,
     };
   }
@@ -165,6 +166,7 @@
             stiff: !!it.stiff,
             whole: !!it.whole,
             cuffs: !!it.cuffs,
+            suit: it.suit === undefined ? !!c.suit : !!it.suit,
             blows: it.blows === undefined ? c.blows : it.blows,
           };
       });
