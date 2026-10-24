@@ -291,7 +291,19 @@
       // not cut along the legs: those two pictures replace it on the legs.
       const legPic = im => !!im && !im._failed && im.complete && im.naturalWidth > 0;
       const ownLegs = it => legPic(it.legL) || legPic(it.legR);
-      D(cloth.getContext('2d'), 'stand', 0, 0, W, H, i, it => !ownLegs(it) && !it.stiff && !it.whole && !it.blows && !(covers(it) && !it.hangs));
+      D(cloth.getContext('2d'), 'stand', 0, 0, W, H, i, it => !ownLegs(it) && !it.stiff && !it.suit && !it.whole && !it.blows && !(covers(it) && !it.hangs));
+      // suit: true (a bodysuit) = top + pants: above the legs' top line it goes in the
+      // stiff (top) route, whole over the chest; from there down it is cut along the
+      // legs like pants. The two share a few px so no seam shows where they meet.
+      const legTopY = (RCFG.parts.find(q => q.id === 'leg_L') || { region: { y0: 868 } }).region.y0;
+      const suitPart = (fromY, toY) => {
+        const c = sized(), x = c.getContext('2d');
+        D(x, 'stand', 0, 0, W, H, i, it => !!it.suit && !ownLegs(it));
+        if (fromY > 0) x.clearRect(0, 0, W, Math.round(fromY * cs));
+        if (toY < RCFG.SRC_H) x.clearRect(0, Math.round(toY * cs), W, H);
+        return c;
+      };
+      cloth.getContext('2d').drawImage(suitPart(legTopY - 8, RCFG.SRC_H), 0, 0);
       // Clothes worn OVER the leg pictures (pants over shoes, by z in outfit_config.js)
       // are also drawn again above them, on the legs only (see buildArt).
       let legZ = -Infinity;
@@ -314,7 +326,7 @@
       // under the stiff top / dress worn over them.
       // A whole garment (a bra) is drawn first on the body's over layer, so a dress
       // or stiff top worn over it still covers it.
-      const ownsTop = it => !it.whole && !it.suit && (it.stiff || coversChest(it));
+      const ownsTop = it => !it.whole && (it.stiff || it.suit || coversChest(it));
       D(over.getContext('2d'), 'stand', 0, 0, W, H, i, it => it.whole);
       D(over.getContext('2d'), 'stand', 0, 0, W, H, i, it => !ownsTop(it), 'over');
       D(overTop.getContext('2d'), 'stand', 0, 0, W, H, i, ownsTop, 'over');
@@ -323,6 +335,7 @@
       // carried by the body and drawn just under the top, so they stay stuck to it.
       D(sx, 'stand', 0, 0, W, H, i, it => it.cuffs, 'armL');
       D(sx, 'stand', 0, 0, W, H, i, it => it.cuffs, 'armR');
+      sx.drawImage(suitPart(0, legTopY), 0, 0);
       D(sx, 'stand', 0, 0, W, H, i, it => !it.whole && (it.stiff || (covers(it) && !it.hangs && !it.blows)));
       // A dress (or other hanging garment) that covers the chest: its top half
       // goes over the chest like a top, its skirt still hangs / blows.
