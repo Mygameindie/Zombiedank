@@ -65,9 +65,8 @@ const DRESS1_SKIRT = {
 //                  the canvas height its skirt starts at (a dress: blows: 820).
 //    stiff: true   one solid piece over the chest (a crop top): stays whole on
 //                  the body, its sleeves still follow the arms.
-//    suit: true    top and pants in one (a bodysuit): above the hips it stays whole
-//                  over the chest like a top, below them it is cut along the legs
-//                  like pants, so the legs swing under it.
+//    suit: true    top and pants in one (a bodysuit): cut along the arms, legs and
+//                  body like a top + pants together, with no seam at the hips.
 //    cuffs: true   its sleeve pictures are cuffs stuck to the top: drawn under
 //                  it and carried by the body, not turning with the arms,
 //                  so the arms are held still while it is worn.

@@ -279,22 +279,14 @@
     if (typeof D === 'function') {
       // whole: true (outfit_config.js): carried by the body in one piece, drawn
       // over the chest (a bra: its cups and straps never go off with an arm).
-      const covers = it => !it.stiff && !it.whole && coversChest(it);
+      // suit: true (a bodysuit) is never kept whole: it is cut along the body parts like
+      // a top and pants combined, so sleeves and legs move with no seam at the hips.
+      const covers = it => !it.stiff && !it.whole && !it.suit && coversChest(it);
       // A garment with its own <name>_L / <name>_R leg pictures (shoes, socks) is
       // not cut along the legs: those two pictures replace it on the legs.
       const legPic = im => !!im && !im._failed && im.complete && im.naturalWidth > 0;
       const ownLegs = it => legPic(it.legL) || legPic(it.legR);
-      D(cloth.getContext('2d'), 'stand', 0, 0, W, H, i, it => !ownLegs(it) && !it.stiff && !it.whole && !it.blows && !it.suit && !(covers(it) && !it.hangs));
-      // suit: true (a bodysuit): top and pants in one. Its part below the hips is cut
-      // along the legs like pants; the part above them is kept whole like a top (below).
-      const suitC = sized(), suitX = suitC.getContext('2d');
-      let suitDrawn = false;
-      D(suitX, 'stand', 0, 0, W, H, i, it => (it.suit && !ownLegs(it)) ? (suitDrawn = true) : false);
-      const hipY = Math.round(RCFG.particles.HipL.y * (pet.h / RCFG.SRC_H) * hdDpr());
-      if (suitDrawn) {
-        suitX.clearRect(0, 0, W, hipY);
-        cloth.getContext('2d').drawImage(suitC, 0, 0);
-      }
+      D(cloth.getContext('2d'), 'stand', 0, 0, W, H, i, it => !ownLegs(it) && !it.stiff && !it.whole && !it.blows && !(covers(it) && !it.hangs));
       // Clothes worn OVER the leg pictures (pants over shoes, by z in outfit_config.js)
       // are also drawn again above them, on the legs only (see buildArt).
       let legZ = -Infinity;
@@ -326,13 +318,7 @@
       // carried by the body and drawn just under the top, so they stay stuck to it.
       D(sx, 'stand', 0, 0, W, H, i, it => it.cuffs, 'armL');
       D(sx, 'stand', 0, 0, W, H, i, it => it.cuffs, 'armR');
-      D(sx, 'stand', 0, 0, W, H, i, it => !it.whole && !it.suit && (it.stiff || (covers(it) && !it.hangs && !it.blows)));
-      if (suitDrawn) {
-        const upper = sized(), ux = upper.getContext('2d');
-        D(ux, 'stand', 0, 0, W, H, i, it => !!it.suit && !it.whole);
-        ux.clearRect(0, hipY, W, H);
-        sx.drawImage(upper, 0, 0);
-      }
+      D(sx, 'stand', 0, 0, W, H, i, it => !it.whole && (it.stiff || (covers(it) && !it.hangs && !it.blows)));
       // A dress (or other hanging garment) that covers the chest: its top half
       // goes over the chest like a top, its skirt still hangs / blows.
       const tops = sized(), tx = tops.getContext('2d');
