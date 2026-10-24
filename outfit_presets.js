@@ -47,39 +47,18 @@ window.OUTFIT_PRESETS = [
     name: "Casual",
     emoji: "👕",
 	boy: {
-    clothes: { hat: "hat1",
-      bottomUnderwear: "bottomunderwear1",
-      dress: "dress1"},
+    clothes: { bottomUnderwear: "boxers1_2",
+      bodysuit: "bodysuit1_2",
+    },
 	  },
-  },
-  {
-    name: "Skirt Day",
-    emoji: "🌸",
-    clothes: { top: "top1", bottom: "skirt1", shoes: "shoes1", hat: "hat1" },
-    colors:  { top: "Pink", bottom: "Purple" },
-    // Boy version: no skirt — same look with pants.
-    boy: {
-      clothes: { top: "top1", bottom: "pants1", shoes: "shoes1", hat: "hat1" },
-      colors:  { top: "Pink", bottom: "Purple" },
-    },
-  },
-  {
-    name: "Party Dress",
-    emoji: "🎀",
-    clothes: { dress: "dress1", shoes: "shoes1", hat: "hat1" },
-    colors:  { dress: "Red", hat: "Yellow" },
-    // Boy version: no dress — a red top + pants instead.
-    boy: {
-      clothes: { top: "top1", bottom: "pants1", shoes: "shoes1", hat: "hat1" },
-      colors:  { top: "Red", hat: "Yellow" },
-    },
   },
   {
     name: "Comfy",
     emoji: "🩲",
-    clothes: { topUnderwear: "topunderwear1", bottomUnderwear: "bottomunderwear1" },
+    boy: {
+      clothes: { bottomUnderwear: "boxers1" },
     // Boy version: no top underwear — just boxers.
-   
+   },
   },
   {
     name: "Swimsuit",
