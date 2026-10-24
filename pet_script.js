@@ -285,7 +285,8 @@
     if (typeof D === 'function') {
       // whole: true (outfit_config.js): carried by the body in one piece, drawn
       // over the chest (a bra: its cups and straps never go off with an arm).
-      const covers = it => !it.stiff && !it.whole && coversChest(it);
+      // A suit (bodysuit) is cut up exactly like pants + a top: it never takes the whole-piece route.
+      const covers = it => !it.stiff && !it.whole && !it.suit && coversChest(it);
       // A garment with its own <name>_L / <name>_R leg pictures (shoes, socks) is
       // not cut along the legs: those two pictures replace it on the legs.
       const legPic = im => !!im && !im._failed && im.complete && im.naturalWidth > 0;
@@ -313,7 +314,7 @@
       // under the stiff top / dress worn over them.
       // A whole garment (a bra) is drawn first on the body's over layer, so a dress
       // or stiff top worn over it still covers it.
-      const ownsTop = it => !it.whole && (it.stiff || coversChest(it));
+      const ownsTop = it => !it.whole && !it.suit && (it.stiff || coversChest(it));
       D(over.getContext('2d'), 'stand', 0, 0, W, H, i, it => it.whole);
       D(over.getContext('2d'), 'stand', 0, 0, W, H, i, it => !ownsTop(it), 'over');
       D(overTop.getContext('2d'), 'stand', 0, 0, W, H, i, ownsTop, 'over');
