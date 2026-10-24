@@ -15,7 +15,7 @@
 //   top1 also puts on the matching bottom1 (and vice versa).
 // - Once you're already wearing separates, they are independent: changing one
 //   does NOT change the other, so you can mix freely (top1 + bottom2).
-// - Dress clears top + bottom; top or bottom clears dress.
+// - Dress or bodysuit clears top + bottom (and each other); top or bottom clears both.
 //
 // GENDER: there is ONE pet, and it is a girl or a boy (set in pet_gender.js).
 // The wardrobe it can use is simply OUTFIT_CONFIG.girl or OUTFIT_CONFIG.boy —
@@ -274,13 +274,16 @@
   }
   function applyDressRules(p, category, id) {
     if (id === 0 || id === "0") return;
-    if (category === "dress") {
+    // A bodysuit works as top + pants in one: like a dress it replaces both.
+    if (category === "dress" || category === "bodysuit") {
       window.selectedClothes[p].top = 0;
       window.selectedClothes[p].bottom = 0;
+      window.selectedClothes[p][category === "dress" ? "bodysuit" : "dress"] = 0;
       return;
     }
     if (category === "top" || category === "bottom") {
       window.selectedClothes[p].dress = 0;
+      window.selectedClothes[p].bodysuit = 0;
     }
   }
   function applyClothingRules(p, category, id) {
