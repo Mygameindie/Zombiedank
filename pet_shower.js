@@ -170,11 +170,6 @@
     height: 1,
   };
 
-  // The sponge scrubs while it washes: it rocks side to side and bobs. `scrub`
-  // eases in and out so it settles when the sponge is lifted off the pet.
-  let scrub = 0;
-  let scrubT = 0;
-
   // ==============================
   // Update Loop
   // ==============================
@@ -269,17 +264,9 @@
       ctx.drawImage(poolImgs.top, poolX, poolY, poolW, poolH);
     }
 
-    // 6) sponge on top of everything, so you can always see it scrub
+    // 6) sponge on top of everything, held still exactly where it's dragged
     if (sponge.img.complete && sponge.img.naturalWidth > 0) {
-      const washing = baths.some(b => b.wasTouching);
-      scrub += ((washing ? 1 : 0) - scrub) * 0.2;
-      if (washing) scrubT += 0.5;
-      const cx = sponge.x + sponge.width / 2, cy = sponge.y + sponge.height / 2;
-      ctx.save();
-      ctx.translate(cx + Math.sin(scrubT) * 14 * scrub, cy + Math.abs(Math.sin(scrubT * 0.5)) * -8 * scrub);
-      ctx.rotate(Math.sin(scrubT) * 0.25 * scrub);
-      ctx.drawImage(sponge.img, -sponge.width / 2, -sponge.height / 2, sponge.width, sponge.height);
-      ctx.restore();
+      ctx.drawImage(sponge.img, sponge.x, sponge.y, sponge.width, sponge.height);
     }
 
     raf = requestAnimationFrame(update);
