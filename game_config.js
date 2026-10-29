@@ -34,7 +34,7 @@ window.GAME_CONFIG = {
   // How many of each food are in the bag at the start (same keys as
   // feed_items.json and garden_items.json; a food with no entry counts as 0).
   startInventory: {
-    brain: 2, garlic: 2, fish: 2, chicken: 2,
+    brain: 2, garlic: 2, fish: 2, chicken: 2, peppermint: 2,
     icegummybear: 2, giantgummybear: 2, rainbowgummybear: 2,
   },
 };
